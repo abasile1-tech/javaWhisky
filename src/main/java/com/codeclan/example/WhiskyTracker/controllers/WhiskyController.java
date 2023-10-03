@@ -17,18 +17,18 @@ public class WhiskyController {
     @Autowired
     WhiskyRepository whiskyRepository;
 
-    @GetMapping(name = "/whiskies")
-    public ResponseEntity<List<Whisky>> getWhiskies(){
-        return new ResponseEntity<>(whiskyRepository.findAll(), HttpStatus.OK);
-    }
-
 //    @GetMapping(name = "/whiskies")
-//    public ResponseEntity<List<Whisky>> getWhiskies(@RequestParam(name = "year", required = false)int year){
-//        if (year == 0) {
-//            return new ResponseEntity<>(whiskyRepository.findAll(), HttpStatus.OK);
-//        } else {
-//            return new ResponseEntity<>(whiskyRepository.findByYear(year), HttpStatus.OK);
-//        }
+//    public ResponseEntity<List<Whisky>> getWhiskies(){
+//        return new ResponseEntity<>(whiskyRepository.findAll(), HttpStatus.OK);
 //    }
+
+    @GetMapping(value = "/whiskies")
+    public ResponseEntity<List<Whisky>> getWhiskies(@RequestParam(name = "year", required = false, defaultValue = "0")int year){
+        if (year == 0) {
+            return new ResponseEntity<>(whiskyRepository.findAll(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(whiskyRepository.findByYear(year), HttpStatus.OK);
+        }
+    }
 
 }
