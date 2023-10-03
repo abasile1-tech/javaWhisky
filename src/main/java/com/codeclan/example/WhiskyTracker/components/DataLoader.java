@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Profile("!test") //Run every time EXCEPT Tests
-@Component
+//@Component //comment this out once db has been seeded
 public class DataLoader implements ApplicationRunner {
 
     @Autowired
