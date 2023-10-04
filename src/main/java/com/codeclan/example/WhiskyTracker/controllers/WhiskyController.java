@@ -28,7 +28,7 @@ public class WhiskyController {
         } else if (distillery_id != 0 && year == 0 && age == 0) {
             return new ResponseEntity<>(whiskyRepository.findByDistilleryId(distillery_id), HttpStatus.OK);
         } else if (distillery_id != 0 && age != 0 ){
-            return new ResponseEntity<>(whiskyRepository.findByDistilleryIdAndByAge(distillery_id, age), HttpStatus.OK);
+            return new ResponseEntity<>(whiskyRepository.findByDistilleryIdAndAge(distillery_id, age), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(whiskyRepository.findAll(), HttpStatus.OK);
         }
